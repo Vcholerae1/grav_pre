@@ -151,7 +151,7 @@
   self.seu-title = [目录]
   let content = {
     set align(horizon)
-    set text(weight: "bold")
+    set text(size:1.5em,weight: "bold")
     hide([-])
     seu-outline(self: self)
   }
@@ -159,10 +159,11 @@
 }
 
 #let new-section-slide(self: none, short-title: auto, title) = {
+  
   self.seu-title = [目录]
   let content = {
     set align(horizon)
-    set text(weight: "bold")
+    set text(size:1.5em,weight: "bold")
     hide([-]) // 如果没这个会导致显示出问题
     seu-outline(self: self)
   }
@@ -311,8 +312,11 @@
     footer: footer,
     header-ascent: 0em,
     footer-descent: 0em,
-    margin: (top: 4em, bottom: 0.7em, x: 2.5em)
+    margin: (top: 4em, bottom: 0.7em, x: 2.5em),
+    background: 
+    place(center + horizon, dx: 0%, dy: 5%, image("test.jpg", width: 70%)),
   )
+  
   // register methods
   self.methods.slide = slide
   self.methods.title-slide = title-slide

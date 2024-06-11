@@ -2,6 +2,7 @@
 #import "@preview/unify:0.6.0": num
 #import "seu-beamer.typ" as theme-seu
 #import "@preview/cetz:0.2.2"
+#import "@preview/mitex:0.2.4": *
 
 #let s = theme-seu.register(aspect-ratio: "4-3")
 #let s = (s.methods.info)(
@@ -34,7 +35,8 @@
 + 在安第斯山附近测量重力时，按安第斯山的地形计算得到的垂线偏差远远大于实际的偏差
 + Boscovitch使用山下物质的亏损来解释这一现象
 + Dutton 引用均衡来解释这一现象
-+ 
+
+
 
 
 
@@ -44,7 +46,6 @@
 == 均衡的发现
 
 
-TODO：
 
 == 均衡的原理
 
@@ -59,17 +60,50 @@ TODO：
 
 
 == 两种均衡模式
+#grid(
+  columns: (1fr,1fr),
+  figure(
+    image("array.png"),
+    caption: [艾里模型 $ sigma_0 H = (sigma - sigma_0)t $],
+  ),
+  figure(
+    image("plt.png"),
+    caption: [普拉特模型$ sigma (D+H) = sigma_0 D $]
 
-- 
+  )
+
+)
 
 
 = 解题过程
+
+== 题目
+一处理想化山脉和根系，如下图所示，处于均衡平衡状态。密度单位为$"kg/"m^3$.请用深度D来表示A点的高度H
 #figure(
-  image("figures/test.png", width: 50%),
+  image("test.png", width: 50%),
   caption: [题目图片],
 ) <fig:fig>
+#pause
+设$rho_1 = 2000 "kg/"m^3,rho _2 = 2500 "kg/"m^3,rho_3 = 3000"kg/"m^3$
+== 解答
+#figure(
+  image("color!.png", width: 60%),
+  caption: [题目图片],  
+) <fig:fig>
 
-TODO：图片处理
+
+
+#let colred(x) = text(fill: yellow, $#x$)
+#let colblued(x) = text(fill: blue, $#x$)
+#let coly(x) = text(fill: purple, $#x$)
+$ colred(1/2(H+D) times rho_1) + colblued(1/2 rho_2 times D)  = colblued(H/2 times rho_2) +coly(rho_3 times(D - H/2))  $
+
+
+
+
+
+
+
 
 
 
