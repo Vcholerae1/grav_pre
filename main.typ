@@ -38,14 +38,28 @@
 
 
 
+== 均衡的发现
 
 
-
-
+#figure(
+  image("firset.png", width: 50%),
+  caption: [假设地形不存在的重力],
+) <fig:fig>
 
 == 均衡的发现
 
 
+#figure(
+  image("second.png", width: 50%),
+  caption: [假设地形存在，不存在质量亏损的重力],
+) <fig:fig>
+
+== 均衡的发现
+
+#figure(
+  image("third.png", width: 50%),
+  caption: [地形存在，质量亏损存在的重力],
+) <fig:fig>
 
 == 均衡的原理
 
@@ -97,7 +111,7 @@
 #let colblued(x) = text(fill: blue, $#x$)
 #let coly(x) = text(fill: purple, $#x$)
 $ colred(1/2(H+D) times rho_1) + colblued(1/2 rho_2 times D)  = colblued(H/2 times rho_2) +coly(rho_3 times(D - H/2))  $
-
+$ H = 3/5 D $
 
 
 
