@@ -40,14 +40,12 @@
 
 == 均衡的发现
 
-
 #figure(
   image("firset.png", width: 50%),
   caption: [假设地形不存在的重力],
 ) <fig:fig>
 
 == 均衡的发现
-
 
 #figure(
   image("second.png", width: 50%),
