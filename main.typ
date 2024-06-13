@@ -22,8 +22,7 @@
 #let (slide, empty-slide, title-slide, outline-slide, new-section-slide, ending-slide) = utils.slides(s)
 #show: slides.with(title-slide: false)
 
-#title-slide(authors: [ 向果 杨璞
-])
+#title-slide(authors: [ 向果 杨璞])
 
 #outline-slide()
 
@@ -35,7 +34,6 @@
 + 在安第斯山附近测量重力时，按安第斯山的地形计算得到的垂线偏差远远大于实际的偏差
 + Boscovitch使用山下物质的亏损来解释这一现象
 + Dutton 引用均衡来解释这一现象
-
 
 
 == 均衡的发现
