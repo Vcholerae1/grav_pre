@@ -214,10 +214,10 @@
   // color theme
   self = (self.methods.colors)(
     self: self,
-    primary: rgb("#40E0D0"),
-    primary-dark: rgb("#40E0D0"),
+    primary: rgb("#3047c9"),
+    primary-dark: rgb("#3047c9"),
     secondary: rgb("#40E0D0"),
-    tertiary: rgb("#40E0D0"),
+    tertiary: rgb("#3047c9"),
     neutral-lightest: rgb("#ffffff"),
     neutral-darkest: rgb("#000000"),
   )

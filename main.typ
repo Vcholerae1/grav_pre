@@ -7,10 +7,9 @@
 #let s = theme-seu.register(aspect-ratio: "4-3")
 #let s = (s.methods.info)(
   self: s,
-  title: [利用重力均衡计算],
-  short-title: [均衡模式],
-  subtitle: [第三次作业 第6小题],
-  author: [杨璞 向果],
+  title: [直流电法勘探中测量磁场及磁场梯度的可行性],
+  short-title: [MMR],
+  author: [秦子凡 龚静 杨璞],
   date: datetime.today(),
   institution: [School of Geosciences and Info-physics,\ Central South University],
 )
@@ -22,93 +21,116 @@
 #let (slide, empty-slide, title-slide, outline-slide, new-section-slide, ending-slide) = utils.slides(s)
 #show: slides.with(title-slide: false)
 
-#title-slide(authors: [ 向果 杨璞])
+#title-slide(authors: [ 秦子凡 龚静 杨璞])
 
 #outline-slide()
 
+= 均匀半空间的求解
 
-= 知识回顾
+== 麦克斯韦方程组
+我们首先观察麦克斯韦方程组
+$ nabla times E = - (partial B) / (partial t) $
+$ nabla times H = J + J_s + (partial D)/(partial t) $
+$ nabla dot D = q $
+$ nabla dot B = 0 $
 
-== 均衡的发现
+== 电势方程
+直流电法勘探一般认为是稳定的电流场，这意味着可以简化麦克斯韦方程组,我们提取电场有关的方程并加上一定的本构关系
+$ nabla times E = 0 $
+$ nabla times H - sigma E = J_s $ #pause
+可以把电场写成一个场的散度
+$ E = - nabla phi$
+利用这个结果并对上面的式子取散度即可得到
+$ nabla dot (sigma nabla phi) = nabla dot J_s $
+这个结果就是著名的DC方程,#pause 配合混合边界条件
+$ (partial U)/(partial n) + (cos theta)/r phi  = 0 $
+我们就完成了DC的理论建模
 
-+ 在安第斯山附近测量重力时，按安第斯山的地形计算得到的垂线偏差远远大于实际的偏差
-+ Boscovitch使用山下物质的亏损来解释这一现象
-+ Dutton 引用均衡来解释这一现象
+== 迷思
 
+- 我们只利用了麦克斯韦方程组中的两个方程
+- 直流电法勘探中的场源真的是纯直流吗？
 
-== 均衡的发现
+== 迷思
 
-#figure(
-  image("firset.png", width: 50%),
-  caption: [假设地形不存在的重力],
-) <fig:fig>
+- 事实上，我们不必假设所有的磁效应都不存在，$(partial B)/(partial t) =0$与
+$nabla times H = J$是独立的
+- 我们实际不能肯定直流电法勘探供入地下之后一定是纯直流，事实上是一个低频的电流场
 
-== 均衡的发现
+== 求解磁场方程
 
-#figure(
-  image("second.png", width: 50%),
-  caption: [假设地形存在，不存在质量亏损的重力],
-) <fig:fig>
+重新考虑麦克斯韦方程组
+$ nabla times E = 0 $
+$ nabla times H - sigma E = J_s $
+$ nabla dot (mu H) = 0 $
+我们通过DC方程可以计算$phi$,得到$phi$后，可以通过求解得到H
+$ nabla times H = J_s - sigma nabla phi = f $
 
-== 均衡的发现
-
-#figure(
-  image("third.png", width: 50%),
-  caption: [地形存在，质量亏损存在的重力],
-) <fig:fig>
-
-== 均衡的原理
-
-
-- 可以设想在地球内部某个深度（称为补偿深度）的下面，地球内部的压力是静水压力。
-- 说明补偿深度处单位横截面上覆柱体重量相等
-- 如果在地球上面存在质量过剩（山脉），在均衡的情况下，在补偿深度之上一定存在一个对应的质量亏损
-- 对于海洋这样的质量亏损，在均衡的情况下，在补偿深度之上一定存在一个对应的质量过剩
-
-
-
-
-
-== 两种均衡模式
-#grid(
-  columns: (1fr,1fr),
-  figure(
-    image("array.png"),
-    caption: [艾里模型 $ sigma_0 H = (sigma - sigma_0)t $],
-  ),
-  figure(
-    image("plt.png"),
-    caption: [普拉特模型$ sigma (D+H) = sigma_0 D $]
-
-  )
-
-)
-
-
-= 解题过程
-
-== 题目
-一处理想化山脉和根系，如下图所示，处于均衡平衡状态。密度单位为$"kg/"m^3$.请用深度D来表示A点的高度H
-#figure(
-  image("test.png", width: 50%),
-  caption: [题目图片],
-) <fig:fig>
+== 求解磁场方程
+待求解方程
+$ nabla times H = J_s - sigma nabla phi = f $
+考虑$ nabla dot H = 0 $
+可以定义
+$ nabla times A = mu H $ 
+这样可以把方程化为
+$ nabla times nabla times A = mu f $
+选用一定的规范条件避免旋度算子的零空间，即可求解。
 #pause
-设$rho_1 = 2000 "kg/"m^3,rho _2 = 2500 "kg/"m^3,rho_3 = 3000"kg/"m^3$
-== 解答
+$ nabla dot A = 0 $
+== 均匀半空间
+在直流电法勘探的语境下，供电大致如下图
 #figure(
-  image("color!.png", width: 60%),
-  caption: [题目图片],  
-) <fig:fig>
+  image("uniform.png."),
+caption:[直流电法勘探点电流源]
+)
+#pause
+$ B_phi^n = B_phi + B_phi^"OB" = (mu I)/(4 pi r)  $
+= 电导率对磁场的影响
+== Biot-Savart定律
+待求解问题
+$ nabla times nabla times A = mu f $
+$ nabla dot A = 0 $
+利用双旋度的展开
+$ nabla^2 A = -mu f  $
+这是一个标量泊松方程，其解析解
+
+#mitex(`A(r)  = \frac{\mu}{4\pi}\iiint \frac{j(r)}{r-r^{'}}\mathbf{d}v
+`)
+
+== Biot-Savart定律
+
+#mitex(`A(r)  = \frac{\mu}{4\pi}\iiint \frac{j(r)}{r-r^{'}}\mathbf{d}v
+`)
+对上式取旋度并作一定的推导
+#mitex(`B(r) = \frac{\mu}{4\pi} \iiint _V \frac{(r - r^{'})\times j(r)}{|r - r^{'}|^3}`)
+利用$U(r)$与$J(r)$的关系,以及矢量恒等式
+#mitex(`B(r) = \frac{\mu}{4\pi} \iiint _V \frac{\nabla U(r) \times \nabla \sigma(r)}{|r - r^{'}|^3}`)
+
+== 电导率对磁场的影响
+#mitex(`B(r) = \frac{\mu}{4\pi} \iiint _V \frac{\nabla U(r) \times \nabla \sigma(r)}{|r - r^{'}|^3}`)
+
+- 均匀半空间的电导率对磁场没有影响（可以推广到层状介质）
+
+- 磁场对电导率的梯度敏感
+
+- 可以利用异常磁场来获取地下电导率的信息
+
+- 只能获得相对电导率信息
+
+= 论证磁场以及其旋度进行勘探的可能性
 
 
+== 可能性
+#mitex(`B(r) = \frac{\mu}{4\pi} \iiint _V \frac{\nabla U(r) \times \nabla \sigma(r)}{|r - r^{'}|^3}`)
+- 异常磁场的源是地下不均匀分布的电流，如果存在高电导率介质，就会出现电流的集中，进而出现异常磁场，理论上可以用于金属矿探测。
+- 对于浸染状矿体，常规电磁法响应较弱，这种方法可以较好的识别（Dentith and Mudge, 2014）。
 
-#let colred(x) = text(fill: yellow, $#x$)
-#let colblued(x) = text(fill: blue, $#x$)
-#let coly(x) = text(fill: purple, $#x$)
-$ colred(1/2(H+D) times rho_1) + colblued(1/2 rho_2 times D)  = colblued(H/2 times rho_2) +coly(rho_3 times(D - H/2))  $
-$ H = 3/5 D $
 
+== 对比
+#figure(
+  image("compare.png."),
+  caption: [几种方法的对比（Bouchedda Abderrezak，2017）]
+)
 
 
 
