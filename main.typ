@@ -80,7 +80,7 @@ $ nabla dot A = 0 $
 == 均匀半空间
 在直流电法勘探的语境下，供电大致如下图
 #figure(
-  image("uniform.png."),
+  image("uniform.png"),
 caption:[直流电法勘探点电流源]
 )
 #pause
@@ -128,7 +128,7 @@ $ nabla^2 A = -mu f  $
 
 == 对比
 #figure(
-  image("compare.png."),
+  image("compare.png"),
   caption: [几种方法的对比（Bouchedda Abderrezak，2017）]
 )
 
